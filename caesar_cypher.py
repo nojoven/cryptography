@@ -44,6 +44,7 @@ if __name__ == "__main__":
     letters = generate_the_alphabet_string()
     print(f"Our alphabet is contains {len(letters)} letters : {letters}")
 
+    # The key is the dict that maps each letter to another one on shift
     key = generate_key(shift_number, letters)
     print(f"The key is {key}")
 
