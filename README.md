@@ -28,4 +28,4 @@ In this project we will cover all concepts and security concepts in cryptography
 
 ## Prerequisites
 - Basic Python
-- Basic Math (Elementary school level - see prerequisite lecture)
+- Basic Math (Elementary school level)
