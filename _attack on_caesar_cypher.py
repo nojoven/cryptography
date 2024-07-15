@@ -58,25 +58,14 @@ if __name__ == "__main__":
 
 
     # This is us trying to break their cipher
-    len_of_decryption_key = len(letters) - shift_number
-    print(f"Lengh of decryption key is {len_of_decryption_key}")
+    for i in range(26):
+        dkey = generate_key(i, letters)
+        message = encrypt(dkey, encryption_result)
+        print(message)
+        if message == message_to_encrypt:
+            print(f"We only need {i} attempts to find a meaningful text: '{message}'")
+            print("We broke through their defense!")
+            break
 
-    decryption_key = generate_key(len(letters)-shift_number, letters)
-    print(f"Decription key is {decryption_key}")
-
-    decrypted_message = decrypt(decryption_key, "BRX DUH DZHVRPH!")
-    print(f"Decrypted message is {decrypted_message}")
-
-    assert decrypted_message == message_to_encrypt
-
-    print(f"{message_to_encrypt} == {decrypted_message}")
-
-    print("Using the get_decryption_key function")
-    dkey = get_decryption_key(key)
-    print(f"dkay is {dkey}")
-
-    cipher_to_decrypt = encryption_result
-    original_message = encrypt(dkey, cipher_to_decrypt)
-    print(f"Again, we find that the original message was {original_message}")
 
 
