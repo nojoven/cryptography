@@ -31,6 +31,13 @@ def encrypt(key, message_to_encrypt):
 def decrypt(decryption_key, cipher):
     return encrypt(decryption_key, cipher)
 
+
+def get_decryption_key(key):
+    dkey = {}
+    for char in key:
+        dkey[key[char]] = char
+    return dkey
+
 if __name__ == "__main__":
     shift_number = 3
     print(f"This caesar cipher will use a shift number of {shift_number}")
@@ -57,5 +64,12 @@ if __name__ == "__main__":
     assert decrypted_message == message_to_encrypt
 
     print(f"{message_to_encrypt} == {decrypted_message}")
+
+    print("Using the get_decryption_key function")
+    dkey = get_decryption_key(key)
+    print(f"dkay is {dkey}")
+    cipher_to_decrypt = encryption_result
+    original_message = encrypt(dkey, cipher_to_decrypt)
+    print(f"Again, we find that the original message was {original_message}")
 
 
