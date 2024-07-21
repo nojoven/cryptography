@@ -47,7 +47,7 @@ if __name__ == "__main__":
     # This is done by our ennemy
     # The key is the dict that maps each letter to another one on shift
     key = generate_key(shift_number, letters)
-    print(f"The key is {key}")
+    print(f"The key is {key} ({len(key)} key-value pairs)")
 
     message_to_encrypt = "YOU ARE AWESOME!"
     print(f"Message to encrypt is '{message_to_encrypt}'")
@@ -59,6 +59,8 @@ if __name__ == "__main__":
 
     # This is us trying to break their cipher
     for i in range(26):
+        # There are 26 letters is our alphabet
+        # So there are 26 items in key (it's a dict)
         dkey = generate_key(i, letters)
         message = encrypt(dkey, encryption_result)
         print(message)
