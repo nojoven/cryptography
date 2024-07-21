@@ -7,7 +7,9 @@ def generate_the_alphabet_string():
 
 def generate_key(shift_number, letters):
     print(shift_number)
-    key = {}
+    # We need the sequence of letters that corresponds to the shift number
+    # Create a dict that maps each original letter to its targer letter
+    key = {} # This is the dict
     count = 0
     for char in letters:
         # Dont forget the modulo to avoid out of range index error
@@ -21,6 +23,7 @@ def generate_key(shift_number, letters):
 def encrypt(key, message_to_encrypt):
     # cipher AKA the encrypted message
     cipher = ""
+    # Create the cipher with the values of the key which is a dict
     for char in message_to_encrypt:
         if char in key:
             cipher += key[char]
@@ -29,13 +32,23 @@ def encrypt(key, message_to_encrypt):
     return cipher
 
 def decrypt(decryption_key, cipher):
+    # Reuse the same logic than the enctypt function
+    # This time the returned value is not a cipher. 
+    # It's the original unencrypted message.
     return encrypt(decryption_key, cipher)
 
 
 def get_decryption_key(key):
+    # Let's do the opposite of the generate_key function
+    # Create a dict which is the decryption key
     dkey = {}
+    # Each key of dkey is a value of the received key (parameter of this function)
+    # The value becomes the key
     for char in key:
+        # Each value is the corresponding key in the received dict
+        # The key becomes the value
         dkey[key[char]] = char
+    # dkey contains key 
     return dkey
 
 if __name__ == "__main__":
@@ -78,5 +91,3 @@ if __name__ == "__main__":
     cipher_to_decrypt = encryption_result
     original_message = encrypt(dkey, cipher_to_decrypt)
     print(f"Again, we find that the original message was {original_message}")
-
-
